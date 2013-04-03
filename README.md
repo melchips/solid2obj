@@ -3,6 +3,16 @@ solid2obj
 
 Wolfire's Black Shades solid file converter to obj file
 
+Screenshots
+-----------
+
+Screenshots of game models imported successfully in blender :
+
+![Image](screenshots/blender_sniper_rifle.png?raw=true)
+
+![Image](screenshots/blender_glock.png?raw=true)
+
+
 Current status
 --------------
 
