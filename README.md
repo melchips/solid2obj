@@ -12,6 +12,10 @@ Screenshots of game models imported successfully in blender :
 
 ![Image](screenshots/blender_glock.png?raw=true)
 
+Ingame example of meshes converted to solid files (a simple UV-sphere as head and a Glock-17 made by [tigg](http://www.blendswap.com/blends/view/19238)) :
+
+![Image](screenshots/in_game_example.png?raw=true)
+
 
 Current status
 --------------
@@ -24,7 +28,7 @@ Supported :
 
 Unsupported :
 
-* QUADS unsupported in OBJ files (using [blender](http://www.blender.org/), the option 'Triangulate Faces" has to be checked in the OBJ export options panel)
+* QUADS unsupported in OBJ files (using [blender](http://www.blender.org/), the option 'Triangulate Faces' has to be checked in the OBJ export options panel)
 * textures (solid files don't support them in their state)
 
 Limitation(s) :
