@@ -1,6 +1,6 @@
 /*
     solid2obj
-    Copyright (C) 2013 melchips (Francois Truphemus : francois (at) truphemus (dot) com)
+    Copyright (C) 2013 melchips (Francois Truphemus : francois (at) truphemus (dot) fr)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 #include <stdlib.h>
 
 #define PROGRAM_NAME "solid2obj"
-#define PROGRAM_VERSION "0.3a"
+#define PROGRAM_VERSION "0.3.1a"
 #define PROGRAM_DESCRIPTION "Wolfire's Black Shades solid file converter from and to obj file"
 
 #define BLACK_SHADES_MAX_FACES 400
@@ -652,7 +652,7 @@ int solid_read_float(FILE *file, int count, float *f)
     return 1;
 }
 
-/* write int (4 bytes) to file */
+/* write float (4 bytes) to file */
 int solid_write_float(FILE *file, int count, const float *f)
 {
     union intfloat infl;
@@ -916,7 +916,19 @@ void obj_mesh_convert_to_solid(obj_mesh_t *obj_mesh, char *solid_file_path)
     printf("vertices = %d\n", obj_mesh->vertices_used);
     printf("faces = %d\n", obj_mesh->faces_used);
     vertices_count = obj_mesh->vertices_used;
-    faces_count = obj_mesh->faces_used;
+    faces_count = 0;
+    /* we recount the faces as some of them may be quads (they count for two tri faces) */
+    for (face_index = 0; face_index < obj_mesh->faces_used; face_index++)
+        {
+            if (obj_mesh->faces[face_index].is_quad)
+                {
+                    faces_count+=2;
+                }
+            else
+                {
+                    faces_count++;
+                }
+        }
     solid_write_short(output_file, 1, &vertices_count);
     solid_write_short(output_file, 1, &faces_count);
 
